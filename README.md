@@ -29,7 +29,7 @@ prophet 1.4.0 · cmdstanpy 1.3.0 · tensorflow 2.21.0 · keras 3.15.1
 
 ```
 forecast 9.0.2 · tseries 0.10.63 · lubridate 1.9.5 · zoo 1.9.0 · xts 0.14.3
-quantmod 0.4.29 · TTR 0.24.4 · pracma 2.4.6 · anomalize 0.3.0
+quantmod 0.4.29 · TTR 0.24.4 · pracma 2.4.6 · anomalize 0.3.0 · fpp2 2.5.1
 ```
 
 Si un notebook o script falla con una versión más nueva, es más probable que sea la librería la que cambió su API — antes de abrir un issue, prueba con las versiones de esta tabla.
