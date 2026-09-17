@@ -1,0 +1,40 @@
+# Entorno PROPIO del Módulo 14 — NO es el mismo requirements.txt de la raíz del repo.
+#
+# Por qué: a fecha de esta producción, `statsforecast` no tiene ninguna versión que soporte a la vez
+# `pandas==3.0.5` (el pin de la raíz del repo) y `scipy==1.17.1` (idem). La serie estable actual de
+# statsforecast (>=2.1.0) exige pandas<3.0.0; la única versión que acepta pandas>=3.0 (2.0.3) exige a
+# cambio scipy<1.16. No hay combinación que satisfaga ambas restricciones del resto del curso a la vez
+# — verificado intentando resolver con `uv`. Ver el detalle completo en
+# `course-module.context.md` (repo ccos) sección "Due diligence técnica".
+#
+# La solución: este entorno es IDÉNTICO al del resto del curso en todo excepto `pandas` — aquí va en
+# la rama 2.x en vez de 3.0.5. scipy, numpy, statsmodels, scikit-learn, pmdarima y yfinance son
+# exactamente las mismas versiones que en el requirements.txt de la raíz.
+#
+# Uso (desde esta carpeta):
+#   uv venv --python 3.11 .venv
+#   source .venv/bin/activate
+#   uv pip install -r requirements.txt
+#   jupyter lab
+
+# --- Igual que el resto del curso ---
+numpy==2.4.6
+scipy==1.17.1
+statsmodels==0.15.0
+scikit-learn==1.9.1
+matplotlib==3.11.2
+pmdarima==2.1.1
+yfinance==1.7.0
+jupyter
+nbconvert
+nbformat
+
+# --- Distinto del resto del curso: pandas 2.x, no 3.0.5 (ver nota arriba) ---
+pandas==2.3.3
+
+# --- Librerías nuevas de este módulo ---
+statsforecast==2.1.1      # Lección 1: forecasting a escala (ARIMA/ETS/Theta en paralelo)
+neuralforecast==3.2.2     # Lección 2: N-BEATS (con torch==2.14.0, pytorch-lightning==2.5.6 como dependencias)
+
+# La Lección 3 (modelos fundacionales / TimeGPT) es puramente conceptual — no requiere ninguna
+# librería adicional ni contrata ninguna API de pago. La Lección 4 (cierre) tampoco añade dependencias.

@@ -34,6 +34,24 @@ quantmod 0.4.29 · TTR 0.24.4 · pracma 2.4.6 · anomalize 0.3.0 · fpp2 2.5.1
 
 Si un notebook o script falla con una versión más nueva, es más probable que sea la librería la que cambió su API — antes de abrir un issue, prueba con las versiones de esta tabla.
 
+### Excepción: Módulo 14 (Métodos modernos de forecasting) tiene su propio entorno
+
+`14-metodos-modernos-de-forecasting/` **no usa el `requirements.txt` de esta raíz** — usa el suyo
+propio, en esa misma carpeta. Motivo: `statsforecast` (Lección 1 de ese módulo) no tiene, a fecha de
+esta producción, ninguna versión que soporte a la vez `pandas==3.0.5` y `scipy==1.17.1` (los pines de
+esta raíz) — es un techo real del ecosistema Nixtla, no un fix de una línea. Ese entorno separado es
+idéntico a este en todo excepto `pandas` (rama 2.x en vez de 3.0.5); añade además `statsforecast` y
+`neuralforecast`. Antes de trabajar en ese módulo:
+
+```bash
+cd 14-metodos-modernos-de-forecasting
+uv venv --python 3.11 .venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+```
+
+El resto de módulos (01-13, 15) siguen usando el `requirements.txt` de esta raíz sin cambios.
+
 ## Origen
 
 Este curso es un **remake** — no una regrabación — de un curso previo con el mismo temario general. El código de este repo está escrito y verificado de cero para las versiones actuales de cada librería; varios ejemplos y datasets son nuevos (datos de mercado refrescados, casos añadidos). No es una copia de ningún repo de terceros.
