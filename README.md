@@ -52,9 +52,9 @@ uv pip install -r requirements.txt
 
 El resto de módulos (01-13, 15) siguen usando el `requirements.txt` de esta raíz sin cambios.
 
-## Origen
+## Sobre este código
 
-Este curso es un **remake** — no una regrabación — de un curso previo con el mismo temario general. El código de este repo está escrito y verificado de cero para las versiones actuales de cada librería; varios ejemplos y datasets son nuevos (datos de mercado refrescados, casos añadidos). No es una copia de ningún repo de terceros.
+Código de acompañamiento del curso, escrito y verificado para las versiones actuales de cada librería.
 
 ---
 © Frogames Formación | Juan Gabriel Gomila

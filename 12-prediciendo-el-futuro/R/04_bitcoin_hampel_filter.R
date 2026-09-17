@@ -2,10 +2,9 @@
 # Curso: Series Temporales con R y Python (Frogames Formación)
 # Código de acompañamiento de la lección 12-prediciendo-el-futuro/04-bitcoin-y-hampel-filter
 #
-# Nota de fuente de datos (ver AUDITORIA-TECNICA.md y course.context.md del curso): el repo
-# original de este curso usaba el paquete `coindeskr` para el precio de Bitcoin en R — retirado
-# de CRAN porque la API de CoinDesk que envolvía se descontinuo. Se sustituye por Yahoo Finance
-# via quantmod::getSymbols(src = "yahoo"), el mismo mecanismo que ya usa el resto del curso.
+# Nota de fuente de datos: el paquete `coindeskr`, que en su día servía el precio de Bitcoin en
+# R, fue retirado de CRAN porque la API de CoinDesk que envolvía se descontinuo. Aquí se usa
+# Yahoo Finance via quantmod::getSymbols(src = "yahoo"), el mismo mecanismo que ya usa el resto del curso.
 
 library(quantmod)
 library(pracma)

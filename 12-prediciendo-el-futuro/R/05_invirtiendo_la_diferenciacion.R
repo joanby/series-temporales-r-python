@@ -2,8 +2,8 @@
 # Curso: Series Temporales con R y Python (Frogames Formación)
 # Código de acompañamiento de la lección 12-prediciendo-el-futuro/05-invirtiendo-la-diferenciacion
 #
-# Sustituye "comodity_price.csv" (ruta absoluta rota en el repo original, ver AUDITORIA-TECNICA.md)
-# por una descarga real y propia del oro via quantmod::getSymbols(src = "yahoo").
+# En vez de depender de un CSV local con ruta absoluta al disco de quien lo generó, aquí se usa
+# una descarga real y propia del oro via quantmod::getSymbols(src = "yahoo").
 
 library(quantmod)
 library(forecast)

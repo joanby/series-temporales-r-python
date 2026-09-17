@@ -5,10 +5,9 @@
 # Dataset: APTelectricity.csv (consumo en watt + nº de electrodomesticos activos,
 # medido cada 5 minutos), en esta misma carpeta.
 #
-# Fix de la auditoria tecnica: el script original leia el CSV con una ruta absoluta
-# del disco de la autora original y con col_types = cols(X1 = col_skip()). Con la
-# version actual de readr, la primera columna (sin nombre en el CSV) se autonombra
-# "...1", no "X1" -- se ajusta aqui. La ruta ya es relativa al propio dataset.
+# Ojo con las rutas y los nombres de columna: un CSV leido con ruta absoluta no es portable,
+# asi que aqui se usa siempre ruta relativa al propio dataset. Con la version actual de readr,
+# la primera columna (sin nombre en el CSV) se autonombra "...1", no "X1" -- se ajusta aqui.
 
 library(readr)
 library(forecast)
