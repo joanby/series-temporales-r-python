@@ -1,9 +1,7 @@
 ## AR en R: ar() base con seleccion automatica de orden (AIC)
 ## Modulo 05 - Series Temporales con R y Python
 ## Contrapartida breve en R de la Leccion 03 (AutoReg / ar_select_order en Python).
-## No estaba en el curso original -- se anade por la licencia de expansion
-## (course.context.md, "Licencia de expansion") porque el repo original no
-## tenia lado R para el modulo AR.
+## Amplia el modulo con su lado en R: seleccion automatica de orden AR por AIC.
 
 cat("=== Serie: capturas anuales de linces (dataset lynx, incluido en R) ===\n")
 print(lynx)

@@ -3,8 +3,7 @@
 # Codigo de acompanamiento de la leccion 03-caracteristicas-fundamentales/05-autocorrelacion-temperaturas-y-pasajeros-en-r
 # Ejecuta este script con: Rscript 02_pasajeros_avion.R
 #
-# NUEVO (no estaba en el repo original -- hueco confirmado por AUDITORIA-TECNICA.md: el repo de
-# Elisa Cabana solo tenia la version Python de esta serie, 5_Pasajeros_avion.ipynb, sin equivalente en R).
+# NUEVO: no habia hasta ahora una version en R de esta serie (solo existia en Python).
 # AirPassengers ya viene incluido en R base (paquete "datasets"), no hace falta descargar ningun CSV.
 
 library(forecast)

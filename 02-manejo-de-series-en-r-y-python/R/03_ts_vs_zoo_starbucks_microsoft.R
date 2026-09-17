@@ -2,7 +2,7 @@
 # Curso: Series Temporales con R y Python (Frogames Formacion)
 # Codigo de acompanamiento de la leccion 02-manejo-de-series-en-r-y-python/04-ts-vs-zoo-starbucks-microsoft
 # Ejecuta este script con: Rscript 03_ts_vs_zoo_starbucks_microsoft.R
-# Descarga en vivo de Yahoo Finance via quantmod -- mecanismo verificado en AUDITORIA-TECNICA.md.
+# Descarga en vivo de Yahoo Finance via quantmod.
 
 library(quantmod)
 library(zoo)
