@@ -89,4 +89,40 @@ plot(sbuxmsft.z, plot.type = "single", col = c("blue", "red"), lty = 1:2, lwd = 
 legend("topleft", legend = c("SBUX", "MSFT"), col = c("blue", "red"), lty = 1:2)
 dev.off()
 
+cat("\n\n=== Lo mismo con datos DIARIOS (sin agregar): aqui el argumento a favor de zoo es mas fuerte ===\n")
+
+sbux.ts.diario <- ts(as.numeric(Ad(SBUX)), start = 1, frequency = 1)
+msft.ts.diario <- ts(as.numeric(Ad(MSFT)), start = 1, frequency = 1)
+cat("Clase:", class(sbux.ts.diario), " longitud:", length(sbux.ts.diario), "\n")
+print(head(sbux.ts.diario))
+
+sbux.z.diario <- zoo(as.numeric(Ad(SBUX)), order.by = as.Date(index(SBUX)))
+msft.z.diario <- zoo(as.numeric(Ad(MSFT)), order.by = as.Date(index(MSFT)))
+cat("\nClase:", class(sbux.z.diario), " longitud:", length(sbux.z.diario), "\n")
+print(head(sbux.z.diario))
+
+cat("\n--- ts diario: la posicion 1,2,3... no dice nada de festivos bursatiles ---\n")
+cat("sbux.ts.diario[1:6]:\n")
+print(sbux.ts.diario[1:6])
+cat("Con ts no hay forma de saber, mirando solo el objeto, si esas 6 observaciones son 6 dias\n")
+cat("de calendario consecutivos o si hubo un fin de semana o festivo de por medio -- la posicion\n")
+cat("avanza siempre de 1 en 1, pase lo que pase en el calendario.\n")
+
+cat("\n--- zoo diario: los huecos de calendario son visibles directamente en el indice ---\n")
+huecos <- diff(index(sbux.z.diario))
+cat("Resumen de huecos entre observaciones consecutivas (en dias de calendario):\n")
+print(table(huecos))
+
+cat("\n--- El hueco mas largo del periodo (festivo pegado a un fin de semana) ---\n")
+i_max <- which.max(huecos)
+cat("Entre", format(index(sbux.z.diario)[i_max]), "y", format(index(sbux.z.diario)[i_max + 1]),
+    "hay", as.numeric(huecos[i_max]), "dias de calendario sin cotizacion.\n")
+
+cat("\n--- window() con fechas reales: aislar una semana exacta con zoo es trivial ---\n")
+semana_navidad <- window(sbux.z.diario, start = as.Date("2025-12-22"), end = as.Date("2025-12-31"))
+print(semana_navidad)
+cat("\nCon sbux.ts.diario, aislar 'la ultima semana de diciembre de 2025' exige buscar a mano\n")
+cat("en que posicion (indice entero) cae esa fecha -- ts no tiene forma de preguntarselo\n")
+cat("directamente, porque nunca almaceno la fecha.\n")
+
 cat("\n\nListo. CSV generados: sbuxPrices.csv, msftPrices.csv. PNGs: sbux_ts.png, sbuxmsft_ts.png, sbuxmsft_zoo.png\n")
