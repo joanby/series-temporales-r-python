@@ -37,11 +37,30 @@ Si un notebook o script falla con una versión más nueva, es más probable que 
 ### Excepción: Módulo 14 (Métodos modernos de forecasting) tiene su propio entorno
 
 `14-metodos-modernos-de-forecasting/` **no usa el `requirements.txt` de esta raíz** — usa el suyo
-propio, en esa misma carpeta. Motivo: `statsforecast` (Lección 1 de ese módulo) no tiene, a fecha de
-esta producción, ninguna versión que soporte a la vez `pandas==3.0.5` y `scipy==1.17.1` (los pines de
-esta raíz) — es un techo real del ecosistema Nixtla, no un fix de una línea. Ese entorno separado es
-idéntico a este en todo excepto `pandas` (rama 2.x en vez de 3.0.5); añade además `statsforecast` y
-`neuralforecast`. Antes de trabajar en ese módulo:
+propio, en esa misma carpeta. Motivo: `statsforecast` (Lección 1 de ese módulo) no tiene ninguna
+versión que soporte a la vez `pandas==3.0.5` y `scipy==1.17.1` (los pines de esta raíz) — es un techo
+real del ecosistema Nixtla, no un fix de una línea:
+
+- `statsforecast>=2.1.0` (la serie estable actual, `2.1.1` en el momento de escribir esto) fija
+  `pandas<3.0.0` en su propio `requires_dist` — incompatible de raíz con `pandas==3.0.5`.
+- `statsforecast==2.0.3` (la última que no pone techo a `pandas`, acepta `pandas>=1.3.5`) fija a
+  cambio `scipy<1.16.0` — incompatible con el `scipy==1.17.1` de esta raíz.
+
+No hay ninguna versión publicada que satisfaga las dos restricciones a la vez. **Re-verificado el
+2026-09-18** con `uv pip install "pandas==3.0.5" "scipy==1.17.1" "statsforecast==2.1.1" --dry-run`
+contra PyPI en un venv limpio, que falla con:
+
+```
+× No solution found when resolving dependencies:
+╰─▶ Because statsforecast>=2.1.1 depends on pandas<3.0.0 and you
+    require pandas==3.0.5, we can conclude that your requirements and
+    statsforecast>=2.1.1 are incompatible.
+    And because you require statsforecast==2.1.1, we can conclude that your
+    requirements are unsatisfiable.
+```
+
+Ese entorno separado es idéntico a este en todo excepto `pandas` (rama 2.x en vez de 3.0.5); añade
+además `statsforecast` y `neuralforecast`. Antes de trabajar en ese módulo:
 
 ```bash
 cd 14-metodos-modernos-de-forecasting
